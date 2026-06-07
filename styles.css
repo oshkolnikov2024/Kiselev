@@ -605,11 +605,35 @@ code {
 .cta__actions {
   display: grid;
   gap: 1rem;
-  align-content: start;
-  padding: 1.5rem;
-  border-radius: calc(var(--radius) + 4px);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2rem;
+  max-width: 22rem;
+}
+
+.cta__photo {
+  margin: 0;
+}
+
+.cta__photo-frame {
+  padding: 1rem;
+  border-radius: calc(var(--radius) + 8px);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.cta__photo-frame img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.cta__photo-frame figcaption {
+  margin-top: 0.85rem;
+  color: rgba(244, 247, 245, 0.72);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .btn--light {
@@ -679,6 +703,15 @@ code {
     order: -1;
     max-width: 420px;
     margin-inline: auto;
+  }
+
+  .cta__photo {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .cta__actions {
+    max-width: none;
   }
 }
 
