@@ -38,16 +38,35 @@ revealItems.forEach((item, index) => {
 if (form) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    const formData = new FormData(form);
+    const name = String(formData.get("name") || "").trim();
+    const contact = String(formData.get("contact") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    const text = [
+      "Заявка с сайта УралДом",
+      "",
+      `Имя: ${name}`,
+      `Контакт: ${contact}`,
+      message ? `Что планируют: ${message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const maxUrl = `https://max.ru/:share?text=${encodeURIComponent(text)}`;
+    window.open(maxUrl, "_blank", "noopener,noreferrer");
+
     const button = form.querySelector("button");
     const originalText = button.textContent;
 
-    button.textContent = "Заявка отправлена!";
+    button.textContent = "Откройте MAX и отправьте";
     button.disabled = true;
     form.reset();
 
     window.setTimeout(() => {
       button.textContent = originalText;
       button.disabled = false;
-    }, 2500);
+    }, 3500);
   });
 }
