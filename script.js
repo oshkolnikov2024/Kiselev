@@ -60,7 +60,7 @@ if (form) {
     const button = form.querySelector("button");
     const originalText = button.textContent;
 
-    button.textContent = "Откройте MAX и отправьте";
+    button.textContent = "Откройте MAX и отправьте Вячеславу";
     button.disabled = true;
     form.reset();
 
