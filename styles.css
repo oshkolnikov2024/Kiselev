@@ -475,8 +475,9 @@ code {
 .portfolio-carousel__viewport {
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
   border-radius: calc(var(--radius) + 4px);
@@ -498,7 +499,9 @@ code {
 .portfolio-carousel__track {
   display: flex;
   gap: 1.25rem;
-  padding: 0.5rem 0.25rem 1rem;
+  width: max-content;
+  min-width: 100%;
+  padding: 0.5rem 0 1rem;
 }
 
 .portfolio-carousel__item {

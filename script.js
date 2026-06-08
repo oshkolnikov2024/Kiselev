@@ -180,25 +180,34 @@ function initPortfolioCarousel() {
     nextBtn.addEventListener("click", () => scrollToIndex(activeIndex + 1));
   }
 
+  let wheelCooldown = false;
+
+  const handleWheel = (event) => {
+    const delta =
+      Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+
+    if (Math.abs(delta) < 1 || wheelCooldown) {
+      return;
+    }
+
+    event.preventDefault();
+
+    wheelCooldown = true;
+    scrollToIndex(activeIndex + (delta > 0 ? 1 : -1));
+
+    window.setTimeout(() => {
+      wheelCooldown = false;
+    }, 280);
+  };
+
+  carousel.addEventListener("wheel", handleWheel, { passive: false });
+
   viewport.addEventListener(
     "scroll",
     () => {
       window.requestAnimationFrame(updateCounter);
     },
     { passive: true }
-  );
-
-  viewport.addEventListener(
-    "wheel",
-    (event) => {
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
-        return;
-      }
-
-      event.preventDefault();
-      viewport.scrollLeft += event.deltaY;
-    },
-    { passive: false }
   );
 
   viewport.addEventListener("mousedown", (event) => {
