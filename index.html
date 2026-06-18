@@ -3,49 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Строительство малоэтажных домов и ландшафтный дизайн на Урале. Газобетон, кирпич, керамзитоблок, фундамент, кровля, благоустройство участка — от проекта до ключей.">
-  <title>УралДом · Малоэтажное строительство и ландшафт</title>
+  <meta name="description" content="СтройНовое — малоэтажное строительство и ландшафт на Урале. stroinovoe.ru. Кирпич, газобетон, керамзитоблок, благоустройство участка.">
+  <title>СтройНовое · stroinovoe.ru — строительство домов на Урале</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header" id="top">
-    <div class="container header__inner">
-      <a class="logo" href="#top">
-        <span class="logo__mark">⌂</span>
-        <span class="logo__text">Урал<span>Дом</span></span>
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__welcome">Добро пожаловать в СтройНовое — строительство и благоустройство на Урале</div>
+      <div class="topbar__meta">
+        <span>stroinovoe.ru</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="header">
+      <a class="header__brand" href="#top">
+        <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+          <rect width="120" height="120" rx="18" fill="#0D1421"/>
+          <path d="M60 12 104 44H16L60 12Z" fill="#F7941D"/>
+          <path fill="#FFFFFF" d="M22 44h76v52H22V44Z"/>
+          <rect x="28" y="50" width="24" height="13" rx="2" fill="#F7941D"/>
+          <rect x="56" y="50" width="24" height="13" rx="2" fill="#F7941D" opacity="0.88"/>
+          <rect x="84" y="50" width="8" height="13" rx="2" fill="#F7941D" opacity="0.76"/>
+          <rect x="28" y="67" width="32" height="11" rx="2" fill="#0D1421" opacity="0.1"/>
+          <rect x="64" y="67" width="28" height="11" rx="2" fill="#0D1421" opacity="0.1"/>
+          <rect x="28" y="82" width="20" height="11" rx="2" fill="#0D1421" opacity="0.1"/>
+          <rect x="52" y="82" width="40" height="11" rx="2" fill="#0D1421" opacity="0.1"/>
+          <path d="M72 70v18" stroke="#F7941D" stroke-width="5.5" stroke-linecap="square"/>
+          <path d="m63 79 9-10 9 10" fill="#F7941D"/>
+          <rect x="14" y="96" width="92" height="5" rx="1" fill="#F7941D"/>
+        </svg>
+        <div class="header__brand-text">
+          <strong>STROINOVOE</strong>
+          <span>Строй новое · Урал</span>
+        </div>
       </a>
-      <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="nav" aria-label="Основная навигация">
-        <a href="#about">О мастере</a>
-        <a href="#services">Услуги</a>
-        <a href="#portfolio">Работы</a>
-        <a href="#process">Этапы</a>
-        <a href="#contact">Контакт</a>
-      </nav>
+      <div class="header__contacts">
+        <a class="header__contact" href="tel:+79221873631">
+          <span class="header__icon">☎</span>
+          <div>
+            <small>Звоните в любое время</small>
+            <strong>+7 (922) 187-36-31</strong>
+          </div>
+        </a>
+        <a class="header__contact" href="https://max.ru/u/f9LHodD0cOIgl2YqtATMa5UG4z0hQf7HPKa0z5Xadc0P7-sMS2zx5u74v5Y" target="_blank" rel="noopener">
+          <span class="header__icon">✉</span>
+          <div>
+            <small>Напишите в MAX</small>
+            <strong>СтройНовое</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="container nav-bar__inner">
+        <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" aria-label="Основная навигация">
+          <div class="nav__links">
+            <a href="#about">О мастере</a>
+            <a href="#services">Услуги</a>
+            <a href="#portfolio">Работы</a>
+            <a href="#process">Этапы</a>
+            <a href="#contact">Контакт</a>
+          </div>
+          <a class="nav__quote" href="#contact">Получить расчёт →</a>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero__bg"></div>
-      <div class="container hero__grid">
+      <div class="container hero__inner">
         <div class="hero__content">
-          <p class="eyebrow reveal">Малоэтажное строительство · Урал</p>
-          <h1 class="hero__title reveal">Дом вашей<br>мечты на <em>Урале</em></h1>
-          <p class="hero__lead reveal">
-            Строю малоэтажные дома из газобетона, кирпича и керамзитоблока, веду объект
-            от фундамента до кровли и создаю ландшафт, который гармонично вписывается
-            в уральскую природу — сосны, холмы и четыре сезона.
+          <p class="hero__eyebrow reveal">⌂ Строим новое — вы живёте</p>
+          <h1 class="hero__title reveal">Качественное<br>строительство<br><span>надёжный дом</span></h1>
+          <p class="hero__text reveal">
+            Малоэтажные дома из кирпича, газобетона и керамзитоблока. Фундамент, кровля,
+            ландшафт и благоустройство участка — от проекта до сдачи объекта на Урале.
           </p>
           <div class="hero__actions reveal">
-            <a class="btn btn--primary" href="https://max.ru/u/f9LHodD0cOIgl2YqtATMa5UG4z0hQf7HPKa0z5Xadc0P7-sMS2zx5u74v5Y" target="_blank" rel="noopener">Написать в MAX</a>
-            <a class="btn btn--ghost" href="#portfolio">Смотреть работы</a>
+            <a class="btn btn--primary" href="https://max.ru/u/f9LHodD0cOIgl2YqtATMa5UG4z0hQf7HPKa0z5Xadc0P7-sMS2zx5u74v5Y" target="_blank" rel="noopener">Написать в MAX →</a>
+            <a class="btn btn--ghost" href="#portfolio">Наши работы →</a>
           </div>
           <ul class="hero__stats reveal">
             <li>
@@ -62,11 +110,10 @@
             </li>
           </ul>
         </div>
-        <figure class="hero__photo reveal">
-          <div class="hero__photo-frame">
-            <img src="images/hero.png" alt="Мастер на строительной площадке малоэтажного дома в уральском лесу">
-            <figcaption>На объекте: газобетон, кирпич, керамзитоблок — и уральский лес вокруг</figcaption>
-          </div>
+      </div>
+      <div class="hero__visual reveal">
+        <figure class="hero__figure">
+          <img src="images/hero-house-plan.png" alt="Модель дома, чертежи и инструменты строителя">
         </figure>
       </div>
     </section>
@@ -74,7 +121,7 @@
     <section class="quote">
       <div class="container">
         <blockquote class="quote__block reveal">
-          <p>«Здесь будет дом нашей мечты — и я довожу каждый проект до этого момента: когда участок превращается в место, куда хочется возвращаться.»<cite>— Строительный мастер, Урал</cite></p>
+          <p>«Здесь будет дом нашей мечты — и я довожу каждый проект до этого момента: когда участок превращается в место, куда хочется возвращаться.»<cite>— Вячеслав, СтройНовое</cite></p>
         </blockquote>
       </div>
     </section>
@@ -83,7 +130,7 @@
       <div class="container about__grid">
         <figure class="about__photo reveal">
           <div class="about__photo-frame">
-            <img src="images/about.png" alt="Мастер у стен дома из газобетонных блоков на участке">
+            <img src="images/about.png" alt="Вячеслав — мастер у стен дома из газобетонных блоков">
           </div>
         </figure>
         <div class="about__content">
@@ -95,10 +142,9 @@
             которая напоминает, ради чего всё затевается.
           </p>
           <p class="section__text reveal">
-            Я работаю на объекте лично — контролирую кладку, кровлю, инженерку
+            Работаю на объекте лично — контролирую кладку, кровлю, инженерку
             и благоустройство. Знаю особенности уральского климата: промерзание грунта,
-            снеговые нагрузки, влажность и то, как правильно посадить участок
-            среди сосен и берёз.
+            снеговые нагрузки и то, как правильно посадить участок среди сосен и берёз.
           </p>
           <ul class="about__tags reveal">
             <li>Газобетон</li>
@@ -165,7 +211,7 @@
           <div class="portfolio-carousel__viewport" data-portfolio-viewport tabindex="0">
             <div class="portfolio-carousel__track" data-portfolio-track></div>
           </div>
-          <p class="portfolio-carousel__hint">Листайте стрелками, колёсиком мыши (по одному фото) или перетаскиванием. Нажмите на фото — откроется в полном размере.</p>
+          <p class="portfolio-carousel__hint">Листайте стрелками, колёсиком мыши или перетаскиванием. Нажмите на фото — откроется в полном размере.</p>
         </div>
       </div>
     </section>
@@ -208,7 +254,7 @@
           <h2 class="section__title">Строим с учётом<br>местного климата</h2>
           <p class="section__text">
             Урал — это морозы до −35 °C, обильный снег, короткое лето и вечнозелёные сосны.
-            Я закладываю правильную глубину фундамента, утепление и уклон кровли,
+            Закладываю правильную глубину фундамента, утепление и уклон кровли,
             подбираю растения, которые переживут зиму, и продумываю дренаж на глинистых почвах.
           </p>
           <ul class="region__list reveal">
@@ -228,7 +274,7 @@
     <section class="cta section" id="contact">
       <div class="container cta__grid">
         <div class="cta__content reveal">
-          <p class="eyebrow">Контакт</p>
+          <p class="eyebrow eyebrow--light">Контакт</p>
           <h2 class="section__title section__title--light">Готовы обсудить<br>ваш дом?</h2>
           <p class="section__text section__text--light">
             Напишите в MAX или позвоните — обсудим проект, отвечу на вопросы
@@ -239,9 +285,13 @@
               <span>Телефон</span>
               <a href="tel:+79221873631">+7 (922) 187-36-31</a>
             </li>
+            <li>
+              <span>MAX</span>
+              <a href="https://max.ru/u/f9LHodD0cOIgl2YqtATMa5UG4z0hQf7HPKa0z5Xadc0P7-sMS2zx5u74v5Y" target="_blank" rel="noopener">Написать Вячеславу</a>
+            </li>
           </ul>
           <div class="cta__actions reveal">
-            <a class="btn btn--primary btn--full" href="https://max.ru/u/f9LHodD0cOIgl2YqtATMa5UG4z0hQf7HPKa0z5Xadc0P7-sMS2zx5u74v5Y" target="_blank" rel="noopener">Написать в MAX</a>
+            <a class="btn btn--primary btn--full" href="https://max.ru/u/f9LHodD0cOIgl2YqtATMa5UG4z0hQf7HPKa0z5Xadc0P7-sMS2zx5u74v5Y" target="_blank" rel="noopener">Написать в MAX →</a>
             <a class="btn btn--ghost btn--full btn--light" href="tel:+79221873631">Позвонить</a>
           </div>
         </div>
@@ -257,7 +307,7 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p>© 2026 · УралДом · Малоэтажное строительство и ландшафт</p>
+      <p>© 2026 · СтройНовое · stroinovoe.ru</p>
       <a href="#top">Наверх ↑</a>
     </div>
   </footer>

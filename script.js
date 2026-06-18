@@ -1,18 +1,72 @@
+const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".nav");
-const navLinks = document.querySelectorAll(".nav a");
+
+const updateHeaderOffset = () => {
+  if (!siteHeader) {
+    return;
+  }
+
+  const height = siteHeader.offsetHeight;
+  document.documentElement.style.setProperty("--header-height", `${height}px`);
+};
+
+updateHeaderOffset();
+window.addEventListener("resize", updateHeaderOffset);
+
+const scrollToAnchor = (hash, { smooth = true } = {}) => {
+  if (!hash || hash === "#") {
+    return;
+  }
+
+  if (hash === "#top") {
+    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+    return;
+  }
+
+  const target = document.querySelector(hash);
+  if (!target) {
+    return;
+  }
+
+  const offset = siteHeader?.offsetHeight ?? 0;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+};
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const hash = link.getAttribute("href");
+    if (!hash || hash === "#") {
+      return;
+    }
+
+    const target = hash === "#top" ? document.querySelector("#top") : document.querySelector(hash);
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    scrollToAnchor(hash);
+
+    if (nav && navToggle && nav.contains(link)) {
+      nav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+
+if (window.location.hash) {
+  window.requestAnimationFrame(() => {
+    scrollToAnchor(window.location.hash, { smooth: false });
+  });
+}
 
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
   });
 }
 
@@ -142,25 +196,34 @@ function initPortfolioCarousel() {
   let isDragging = false;
   let dragMoved = false;
 
-  const getClosestIndex = () => {
-    const viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
-    let closestIndex = 0;
-    let closestDistance = Number.POSITIVE_INFINITY;
+  const getStride = () => {
+    if (items.length < 2) {
+      return items[0]?.offsetWidth || 1;
+    }
+    return items[1].offsetLeft - items[0].offsetLeft;
+  };
 
-    items.forEach((item, index) => {
-      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-      const distance = Math.abs(itemCenter - viewportCenter);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
+  const getActiveIndex = () => {
+    if (items.length === 0) {
+      return 0;
+    }
 
-    return closestIndex;
+    if (viewport.scrollLeft <= 8) {
+      return 0;
+    }
+
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    if (viewport.scrollLeft >= maxScroll - 8) {
+      return items.length - 1;
+    }
+
+    const stride = getStride();
+    const index = Math.round(viewport.scrollLeft / stride);
+    return Math.max(0, Math.min(index, items.length - 1));
   };
 
   const updateCounter = () => {
-    activeIndex = getClosestIndex();
+    activeIndex = getActiveIndex();
     if (counter) {
       counter.textContent = `${activeIndex + 1} / ${items.length}`;
     }
@@ -173,15 +236,29 @@ function initPortfolioCarousel() {
   };
 
   const scrollToIndex = (index) => {
-    const target = items[Math.max(0, Math.min(index, items.length - 1))];
+    const targetIndex = Math.max(0, Math.min(index, items.length - 1));
+    const target = items[targetIndex];
     if (!target) {
       return;
     }
 
-    viewport.scrollTo({
-      left: target.offsetLeft - (viewport.clientWidth - target.offsetWidth) / 2,
-      behavior: "smooth",
-    });
+    activeIndex = targetIndex;
+
+    if (targetIndex === 0) {
+      viewport.scrollTo({ left: 0, behavior: "smooth" });
+    } else if (targetIndex === items.length - 1) {
+      viewport.scrollTo({
+        left: viewport.scrollWidth - viewport.clientWidth,
+        behavior: "smooth",
+      });
+    } else {
+      viewport.scrollTo({
+        left: target.offsetLeft - (viewport.clientWidth - target.offsetWidth) / 2,
+        behavior: "smooth",
+      });
+    }
+
+    updateCounter();
   };
 
   if (prevBtn) {
@@ -237,7 +314,7 @@ function initPortfolioCarousel() {
 
     isDragging = false;
     viewport.classList.remove("is-dragging");
-    scrollToIndex(getClosestIndex());
+    scrollToIndex(getActiveIndex());
   });
 
   window.addEventListener("mousemove", (event) => {
@@ -275,7 +352,13 @@ function initPortfolioCarousel() {
     true
   );
 
+  viewport.scrollLeft = 0;
+  activeIndex = 0;
   updateCounter();
+
+  window.addEventListener("resize", () => {
+    updateCounter();
+  });
 }
 
 initPortfolioCarousel();
